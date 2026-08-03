@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package employee;
+
+option go_package = "grpc-employee/generated;generated";
+
+message EmployeeRequest {
+    int32 id = 1;
+}
+
+message EmployeeResponse {
+    int32 id = 1;
+    string name = 2;
+    string department = 3;
+}
+
+service EmployeeService {
+    rpc GetEmployee(EmployeeRequest) returns (EmployeeResponse);
+    rpc GetAllEmployees(EmployeeRequest) returns (stream EmployeeResponse);
+}
